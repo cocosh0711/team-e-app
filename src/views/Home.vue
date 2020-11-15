@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div>{{ $store.getters.userName }} さん、こんにちは！</div>
+    <button @click="signIn">サインイン</button>
+    <button @click="signOut">サインアウト</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  }
-};
+  methods: {
+    signIn: function() {
+      this.$store.dispatch("signIn")
+    },
+    signOut: function() {
+      this.$store.dispatch("signOut")
+    },
+  },
+}
 </script>
