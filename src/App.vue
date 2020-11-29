@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <Header></Header>
+    <router-link to="/posts">Post</router-link>
+    <a @click="toMypage">MyPage</a>
     <router-view />
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue"
+import Footer from "@/components/Footer.vue"
+import Header from "@/components/Header.vue"
 
 export default {
-  component: {
-    NavBar,
+  components: {
+    Footer,
+    Header,
+  },
+  methods: {
+    toMypage: function() {
+      this.$router.push("/my-page/" + this.$store.state.user.uid)
+    },
   },
 }
 </script>

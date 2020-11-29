@@ -2,6 +2,9 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
 import About from "../views/About.vue"
+import Post from "../views/Post.vue"
+import MyPage from "../views/MyPage.vue"
+import PostsIndex from "../views/PostsIndex.vue"
 
 Vue.use(VueRouter)
 
@@ -15,6 +18,21 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/posts",
+    name: "Post",
+    component: Post,
+  },
+  {
+    path: "/my-page/:uid",
+    name: "MyPage",
+    component: MyPage,
+  },
+  {
+    path: "/posts-index",
+    name: "PostsIndex",
+    component: PostsIndex,
   },
 ]
 
