@@ -20,7 +20,6 @@
       <p>createdAt {{ post.createdAt }}</p>
     </div>
     <hr />
-    <div>{{ $data }}</div>
   </div>
 </template>
 
@@ -37,15 +36,7 @@ export default {
       // postsはfirestoreから取得したデータをしまうところ
       url: "",
       imageUrl: "",
-      posts: [
-        {
-          title: "sample",
-          content: "YouTubeめっちゃおもろいやん",
-          url: "",
-          createdAt: "2020/11/21",
-        },
-        { title: "smaple2", content: "ヒカキン最高！" },
-      ],
+      posts: [],
     }
   },
   methods: {
@@ -98,3 +89,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.posts {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+</style>

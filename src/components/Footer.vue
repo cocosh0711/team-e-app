@@ -1,9 +1,8 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
+  <div id="nav-f">
+    <p class="footer-logo">2020@チーム他人任せ</p>
+    <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
-    <button>サインイン</button>
-    <button>サインアウト</button>
   </div>
 </template>
 
@@ -11,4 +10,13 @@
 export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.footer-logo {
+  color: white;
+  display: inline-block;
+}
+#nav-f {
+  width: 100%;
+  background-color: #393e46;
+}
+</style>
