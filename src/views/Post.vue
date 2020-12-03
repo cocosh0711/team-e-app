@@ -12,18 +12,13 @@
     ></textarea>
     <button v-on:click="post">投稿</button>
     <!-- ④for文でtextareaの内容も表示する -->
-    <div v-for="(post, index) in posts" v-bind:key="index">
-      <p>Post {{ post }}</p>
-      <p>title {{ post.title }}</p>
-      <p>url {{ post.url }}</p>
-      <p>content {{ post.content }}</p>
-      <p>createdAt {{ post.createdAt }}</p>
-    </div>
+
     <hr />
   </div>
 </template>
 
 <script>
+import { db } from "@/firebase"
 import firebase from "firebase"
 
 export default {
@@ -60,17 +55,18 @@ export default {
         })
         .then(data => {
           console.dir(data)
+          const ref = db.collection("posts").doc()
           this.imageUrl = data.items[0].snippet.thumbnails.high.url
-          firebase
-            .firestore()
-            .collection("posts")
-            .add({
+          ref
+            .set({
               // ③postsコレクションにtextareaの内容も追加できるようにする
               title: this.title,
               content: this.content,
               url: videoId,
               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
               imageUrl: this.imageUrl,
+              likesNumber: 0,
+              id: ref.id,
             })
             .then(
               firebase
