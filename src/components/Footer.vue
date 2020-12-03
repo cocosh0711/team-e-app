@@ -18,5 +18,7 @@ export default {}
 #nav-f {
   width: 100%;
   background-color: #393e46;
+  // position: absolute;
+  bottom: 0;
 }
 </style>

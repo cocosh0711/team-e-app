@@ -52,7 +52,7 @@ export default {
         "https://www.googleapis.com/youtube/v3/videos?id=" +
         videoId +
         "&key=" +
-        process.env.VUE_APP_YOUTUBE_API_KEY +
+        "AIzaSyDT1XQ-llw_zWtyIJRBH3g-bwKuEEWpJ0U" +
         "&part=snippet,contentDetails,statistics,status"
       fetch(url)
         .then(res => {
@@ -92,6 +92,7 @@ export default {
 
 <style lang="scss">
 .posts {
+  height: 300px;
   display: flex;
   flex-direction: column;
   width: 80%;
