@@ -20,7 +20,6 @@
       <p>createdAt {{ post.createdAt }}</p>
     </div>
     <hr />
-    <div>{{ $data }}</div>
   </div>
 </template>
 
@@ -37,15 +36,7 @@ export default {
       // postsはfirestoreから取得したデータをしまうところ
       url: "",
       imageUrl: "",
-      posts: [
-        {
-          title: "sample",
-          content: "YouTubeめっちゃおもろいやん",
-          url: "",
-          createdAt: "2020/11/21",
-        },
-        { title: "smaple2", content: "ヒカキン最高！" },
-      ],
+      posts: [],
     }
   },
   methods: {
@@ -61,7 +52,7 @@ export default {
         "https://www.googleapis.com/youtube/v3/videos?id=" +
         videoId +
         "&key=" +
-        process.env.VUE_APP_YOUTUBE_API_KEY +
+        "AIzaSyDT1XQ-llw_zWtyIJRBH3g-bwKuEEWpJ0U" +
         "&part=snippet,contentDetails,statistics,status"
       fetch(url)
         .then(res => {
@@ -98,3 +89,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.posts {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+</style>
