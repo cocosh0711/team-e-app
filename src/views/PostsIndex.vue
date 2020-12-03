@@ -2,17 +2,16 @@
   <div class="posts-index">
     <!-- <img v-bind:src="imageUrl" /> -->
     <div class="container" v-for="(post, index) in posts" v-bind:key="index">
-      <div>
-        <p>title {{ post.title }}</p>
-        <p>url {{ post.url }}</p>
-        <p>imageUrl {{ post.imageUrl }}</p>
-        <img v-bind:src="post.imageUrl" />
-        <p>content {{ post.content }}</p>
-        <p>createdAt {{ post.createdAt }}</p>
-        <button v-on:click="likeButton">
-          <font-awesome-icon icon="heart" />いいね！
-        </button>
-      </div>
+      <p class="title">タイトル： {{ post.title }}</p>
+      <p class="url">
+        動画URL： https://www.youtube.com/watch?v={{ post.url }}
+      </p>
+      <img class="img" v-bind:src="post.imageUrl" />
+      <p class="content">投稿内容： {{ post.content }}</p>
+      <p class="time">投稿日時： {{ post.createdAt }}</p>
+      <button class="btn" v-on:click="likeButton(index)">
+        <font-awesome-icon icon="heart" />いいね！（{{ post.likesNumber }}）
+      </button>
     </div>
   </div>
 </template>
@@ -68,7 +67,14 @@ export default {
           this.imageUrl = data.items[0].snippet.thumbnails.high.url // 画像を表示する
         })
     },
-    likeButton: function() {},
+    likeButton: function(index) {
+      // firebaseのlikesNumberに+1する
+      db.collection("posts")
+        .doc(this.posts[index].id)
+        .update({
+          likesNumber: this.posts[index].likesNumber++,
+        })
+    },
   },
 }
 </script>
@@ -77,5 +83,25 @@ export default {
 .posts-index {
   min-height: 100vh;
   position: relative;
+}
+.container {
+  display: flex;
+  display: inline-block;
+  flex-direction: column;
+  padding: 10px 10px;
+  border: solid 1px black; /*線*/
+  border-radius: 10px; /*角の丸み*/
+}
+.img {
+  width: 50%;
+  margin: 0 auto;
+}
+.btn {
+  width: auto;
+  margin: 0 auto;
+}
+.title {
+  border: solid 1px black; /*線*/
+  border-radius: 10px;
 }
 </style>
