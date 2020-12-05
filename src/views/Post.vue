@@ -67,6 +67,7 @@ export default {
               imageUrl: this.imageUrl,
               likesNumber: 0,
               id: ref.id,
+              uid: this.$store.state.user.uid,
             })
             .then(
               firebase
@@ -78,8 +79,14 @@ export default {
                   snapshot.docs.forEach(doc => {
                     this.posts.push({ ...doc.data() })
                   })
+                })
+                .then(() => {
+                  this.$router.push("/my-page/" + this.$store.state.user.uid)
                 }),
             )
+            .error(() => {
+              alert("正しく投稿できませんでした。")
+            })
         })
     },
   },

@@ -1,11 +1,15 @@
 <template>
   <div id="nav-h">
     <h1 class="header-logo">YouTuber-Review</h1>
+  <div v-if="!$store.state.user">
+    <u class="header-items" @click="signIn">signIn</u>
+  </div>
+  <div v-else>
+    <u class="header-items" @click="signOut">signOut</u>
     <u class="header-items" @click="toMypage">MyPage</u>
     <router-link to=/post>NewPost</router-link>
-    <u class="header-items" @click="signOut">signOut</u>
-    <u class="header-items" @click="signIn">signIn</u>
     <router-link to="/posts-index">Posts</router-link>
+  </div>
     <router-link to="/about">About</router-link>
     <router-link to="/">Home</router-link>
   </div>
@@ -19,9 +23,11 @@ export default {
     },
     signIn: function() {
       this.$store.dispatch("signIn")
+      this.$router.push("/")
     },
     signOut: function() {
       this.$store.dispatch("signOut")
+      this.$router.push("/")
     },
   },
 }
