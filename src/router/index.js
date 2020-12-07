@@ -3,8 +3,9 @@ import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
 import About from "../views/About.vue"
 import Post from "../views/Post.vue"
-import MyPage from "../views/MyPage.vue"
+import MyPosts from "../views/MyPosts.vue"
 import PostsIndex from "../views/PostsIndex.vue"
+import Postdetail from "../views/Postdetail.vue"
 
 Vue.use(VueRouter)
 
@@ -25,14 +26,19 @@ const routes = [
     component: Post,
   },
   {
-    path: "/my-page/:uid",
-    name: "MyPage",
-    component: MyPage,
+    path: "/my-posts/:uid",
+    name: "MyPosts",
+    component: MyPosts,
   },
   {
     path: "/posts-index",
     name: "PostsIndex",
     component: PostsIndex,
+  },
+  {
+    path: "/post-detail",
+    name: "Postdetail",
+    component: Postdetail,
   },
 ]
 

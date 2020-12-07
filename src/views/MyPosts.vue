@@ -11,7 +11,11 @@
         <p class="url">
           動画URL： https://www.youtube.com/watch?v={{ post.url }}
         </p>
-        <img class="img" v-bind:src="post.imageUrl" />
+        <img
+          class="img"
+          v-bind:src="post.imageUrl"
+          @click="linkToVideo(post.url)"
+        />
         <p class="content">投稿内容： {{ post.content }}</p>
         <p class="time">投稿日時： {{ post.createdAt }}</p>
       </div>
@@ -43,6 +47,10 @@ export default {
           this.MyPosts.push({ ...doc.data() })
         })
       })
+    },
+    linkToVideo: function(url) {
+      window.open("https://www.youtube.com/watch?v=" + url, "_blank")
+      console.log("https://www.youtube.com/watch?v=" + url)
     },
   },
 }

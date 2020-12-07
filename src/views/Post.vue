@@ -99,6 +99,8 @@ export default {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: 0 auto;
+  margin: auto;
+  min-height: 80vh;
+  padding: 30px 0 0px;
 }
 </style>

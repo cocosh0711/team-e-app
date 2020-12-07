@@ -18,7 +18,10 @@ export default new Vuex.Store({
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase
         .auth()
-        .signInWithPopup(provider)
+        .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(function() {
+          return firebase.auth().signInWithPopup(provider)
+        })
         .then(result => {
           const user = {
             uid: result.user.uid,
@@ -27,6 +30,9 @@ export default new Vuex.Store({
           }
           store.commit("REPLACE_USER", user)
         })
+    },
+    setUser: function({ commit }, user) {
+      commit("REPLACE_USER", user)
     },
     signOut: function(store) {
       firebase

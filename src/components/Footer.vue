@@ -18,7 +18,21 @@ export default {}
 #nav-f {
   width: 100%;
   background-color: #393e46;
-  // position: absolute;
+  position: relative;
   bottom: 0;
+
+  /* 以下 背景色やテキストカラーなどはお好みで指定してください */
+
+  text-align: center;
+  a {
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+
+    &.router-link-exact-active {
+      color: red;
+    }
+  }
 }
 </style>
