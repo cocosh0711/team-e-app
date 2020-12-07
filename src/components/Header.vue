@@ -54,6 +54,8 @@ export default {
   padding-top: 20px;
 }
 #nav-h {
+  margin: 0px;
+  padding: 0px;
   height: 80px;
   z-index: 1;
   width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     <Header></Header>
     <router-view />
     <Footer></Footer>
@@ -28,16 +28,14 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  display: block;
+.app {
+  padding: 0;
+  margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width: 100vw;
-  // min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
-  // padding-bottom: 60px; /* ←フッターの高さを指定 */
-  box-sizing: border-box;
+  width: 100%;
 }
 </style>

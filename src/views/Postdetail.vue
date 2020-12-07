@@ -35,6 +35,13 @@ import firebase from "firebase"
 export default {
   data: function() {
     return {
+      // titileはmethodsで送るときに参照するためのデータ
+      title: "",
+      // ②textareaの内容を持ってくるデータを作る
+      content: "",
+      // postsはfirestoreから取得したデータをしまうところ
+      url: "",
+      imageUrl: "",
       posts: [],
     }
   },
