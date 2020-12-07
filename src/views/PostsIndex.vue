@@ -2,16 +2,18 @@
   <div class="posts-index">
     <!-- <img v-bind:src="imageUrl" /> -->
     <div class="container" v-for="(post, index) in posts" v-bind:key="index">
-      <p class="title">タイトル： {{ post.title }}</p>
-      <p class="url">
-        動画URL： https://www.youtube.com/watch?v={{ post.url }}
-      </p>
-      <img class="img" v-bind:src="post.imageUrl" />
-      <p class="content">投稿内容： {{ post.content }}</p>
-      <p class="time">投稿日時： {{ post.createdAt }}</p>
+      <p class="post-items">タイトル： {{ post.title }}</p>
+      <!-- <p class="post-items">投稿日時： {{ post.createdAt }}</p> -->
+      <img
+        class="img"
+        v-bind:src="post.imageUrl"
+        @click="linkToVideo(post.url)"
+      />
+      <p class="post-items">投稿内容： {{ post.content }}</p>
       <button class="btn" v-on:click="likeButton(index)">
         <font-awesome-icon icon="heart" />いいね！（{{ post.likesNumber }}）
       </button>
+      <button class="btn" @click="postdetail(index)">コメントする</button>
     </div>
   </div>
 </template>
@@ -75,6 +77,16 @@ export default {
           likesNumber: this.posts[index].likesNumber++,
         })
     },
+    postdetail: function(index) {
+      this.$router.push({
+        name: "Postdetail",
+        params: { uid: this.posts[index].id },
+      })
+    },
+    linkToVideo: function(url) {
+      window.open("https://www.youtube.com/watch?v=" + url, "_blank")
+      console.log("https://www.youtube.com/watch?v=" + url)
+    },
   },
 }
 </script>
@@ -83,25 +95,29 @@ export default {
 .posts-index {
   min-height: 100vh;
   position: relative;
+  padding: 20px 0;
 }
 .container {
   display: flex;
   display: inline-block;
   flex-direction: column;
   padding: 10px 10px;
-  border: solid 1px black; /*線*/
-  border-radius: 10px; /*角の丸み*/
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 5px 5px;
 }
 .img {
   width: 50%;
   margin: 0 auto;
+  border: solid 2px black;
 }
 .btn {
   width: auto;
-  margin: 0 auto;
+  margin: 3px 3px;
+  padding: 2px;
 }
-.title {
-  border: solid 1px black; /*線*/
-  border-radius: 10px;
+.post-items {
+  border: solid 1px black;
+  border-radius: 5px;
 }
 </style>

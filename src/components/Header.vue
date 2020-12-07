@@ -1,17 +1,17 @@
 <template>
   <div id="nav-h">
-    <h1 class="header-logo">YouTuber-Review</h1>
-  <div v-if="!$store.state.user">
-    <u class="header-items" @click="signIn">signIn</u>
+    <h1 class="header-logo">YouTubers-Review</h1>
+  <div v-if="!$store.state.user" >
+    <u  @click="signIn" class="header-items">signIn</u>
   </div>
   <div v-else>
-    <u class="header-items" @click="signOut">signOut</u>
-    <u class="header-items" @click="toMypage">MyPage</u>
-    <router-link to=/post>NewPost</router-link>
-    <router-link to="/posts-index">Posts</router-link>
+    <u @click="signOut" class="header-items">SignOut</u>
+    <u @click="toMypage" class="header-items">MyPosts</u>
+    <router-link to=/post class="header-items">NewPost</router-link>
+    <router-link to="/posts-index" class="header-items">Posts</router-link>
   </div>
-    <router-link to="/about">About</router-link>
-    <router-link to="/">Home</router-link>
+    <router-link to="/about" class="header-items">About</router-link>
+    <router-link to="/" class="header-items">Home</router-link>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 export default {
   methods: {
     toMypage: function() {
-      this.$router.push("/my-page/" + this.$store.state.user.uid)
+      this.$router.push("/my-posts/" + this.$store.state.user.uid)
     },
     signIn: function() {
       this.$store.dispatch("signIn")
@@ -37,23 +37,35 @@ export default {
 .header-items {
   float: right;
   font-weight: bold;
-  color: #a07676;
+  color: white;
   padding-right: 20px;
+  padding-top: 30px;
+  text-decoration: none;
+  &.router-link-exact-active {
+      color: red;
+    }
 }
-
 .header-logo {
   float: left;
-  padding-left: 0px;
+  padding-left: 45px;
   color: white;
   font-size: 25px;
   line-height: 10px;
+  padding-top: 20px;
 }
-
 #nav-h {
-  height: 30px;
-  position: absolute;
+  height: 80px;
   z-index: 1;
   width: 100%;
   background-color: #393e46;
+    a {
+    font-weight: bold;
+    color: white;
+    float: right;
+    padding-right: 20px;
+    &.router-link-exact-active {
+      color: red;
+    }
+}
 }
 </style>
