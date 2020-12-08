@@ -81,7 +81,7 @@ export default {
                   })
                 })
                 .then(() => {
-                  this.$router.push("/my-page/" + this.$store.state.user.uid)
+                  this.$router.push("/my-posts/" + this.$store.state.user.uid)
                 }),
             )
             .error(() => {

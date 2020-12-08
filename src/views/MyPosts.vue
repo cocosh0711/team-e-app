@@ -7,17 +7,13 @@
         v-for="(post, index) in MyPosts"
         v-bind:key="index"
       >
-        <p class="title">タイトル： {{ post.title }}</p>
-        <p class="url">
-          動画URL： https://www.youtube.com/watch?v={{ post.url }}
-        </p>
+        <p class="post-items">タイトル： {{ post.title }}</p>
         <img
           class="img"
           v-bind:src="post.imageUrl"
           @click="linkToVideo(post.url)"
         />
-        <p class="content">投稿内容： {{ post.content }}</p>
-        <p class="time">投稿日時： {{ post.createdAt }}</p>
+        <p class="post-items">投稿内容： {{ post.content }}</p>
       </div>
     </div>
   </div>
@@ -56,4 +52,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.post-items {
+  border: solid 1px black;
+  border-radius: 5px;
+}
+</style>
